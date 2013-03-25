@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Yokel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="static/css/style.css" rel="stylesheet" media="screen">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div id="header" class="container">
+      <h1>Yokel</h1>
+    </div>
+    <div id="main" class="container">
+      <div id="left">
+	<div id="chatboxdiv" class="span6">
+	  <ul id="chat-box">
+	  </ul>
+	</div>
+	<div id="entertext">
+	  <input type="text" id="send-msg-input"/>
+	  <button id="send-msg">Enter</button>
+	</div>
+      </div>
+
+      <div id="right">
+	<div id="picbox">
+	  <img src="http://placekitten.com/300/200" />
+	</div>
+	<h2>Room topic: Hello, world</h2>
+	<button>Alert!</button>
+	<h2>Who</h2>
+	<ul id="whoinroom">
+	  <li>Jack</li>
+	  <li>Matty</li>
+	</ul>
+      </div>
+    </div>
+
+  </body>
+</html>
