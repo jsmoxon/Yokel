@@ -87,7 +87,7 @@ $ () =>
     $("#send-msg").click () =>
         addMsgToModel $('#send-msg-input').val()
         $('#send-msg-input').val('')
-    $("#div").bind "keypress", (event) =>
+    $("#send-msg-input").bind "keypress", (event) =>
         if (event.which == 13)
             event.preventDefault()
             addMsgToModel $('#send-msg-input').val()

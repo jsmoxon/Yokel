@@ -147,7 +147,7 @@
       addMsgToModel($('#send-msg-input').val());
       return $('#send-msg-input').val('');
     });
-    $("#div").bind("keypress", function(event) {
+    $("#send-msg-input").bind("keypress", function(event) {
       if (event.which === 13) {
         event.preventDefault();
         addMsgToModel($('#send-msg-input').val());
