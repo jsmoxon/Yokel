@@ -3,10 +3,7 @@
   <head>
     <title>Yokel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
-
-
     <link href="static/css/style.css" rel="stylesheet" media="screen">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="http://underscorejs.org/underscore-min.js"></script>
@@ -21,26 +18,22 @@
 
   </head>
   <body>
-    <div id="header" class="">
-      <div id="header" class="">
-	<a class="brand"><h1>Yokel</h1></a>
-      </div>
+    <div id="header" class="container">
+      <h1>Yokel</h1>
     </div>
-    <div id="main" class="row">
-      <div id="left" class="">
-	<div id="chatboxdiv" class="span9">
+    <div id="main" class="container">
+      <div id="left">
+	<div id="chatboxdiv" class="span6">
 	  <ul id="chat-box">
-	    <li>bla</li>
 	  </ul>
 	</div>
-	<div id="enter-text">
+	<div id="entertext">
 	  <input type="text" id="send-msg-input"/>
-	  <button id="send-msg" class="btn btn-primary">Enter</button>
-	  
+	  <button id="send-msg">Enter</button>
 	</div>
       </div>
 
-      <div id="right" class="">
+      <div id="right">
 	<div id="picbox">
 	  <img src="http://placekitten.com/300/200" />
 	</div>
