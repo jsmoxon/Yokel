@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>10,000 Hours</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+
+  </head>
+  <body>
+    <div id="one">
+      <div class="container">
+	<div class="hello">
+	  <h1>Hello, world!</h1>
+	  <h3>Magna mcsweeney's tempor, actually etsy vice ad placeat..</h3>
+	</div>
+      </div>
+    </div>
+
+    <div id="two">
+      <div class="container">
+	<div class="hello">
+	  <h1>4,328 Hours</h1>
+	  <h3>Binge drinking on weekends, partying with friends, wasting time.</h3>
+        </div>
+      </div>
+    </div>
+
+    <div id="three">
+      <div class="container">
+        <div class="hello">
+          <h1>4,328 Hours</h1>
+          <h3>Binge drinking on weekends, partying with friends, wasting time.</h3>
+        </div>
+      </div>
+    </div>
+
+    <div id="four">
+      <div class="container">
+	<img src="./hours2.png" class="hours" />
+	<div id="ultimate">
+          <h1>Playing Ultimate Frisbee</h1>
+          <h3>Playing ultimate frisbee</h3>
+	  </div>
+      </div>
+    </div>
+
+    <div id="writing">
+      <div class="container">
+        <img src="./hours.png" class="hours" />
+
+	<div class="writing">
+          <h1 class="white">150,000 words written this year</h1>
+          <h3>Using my web application <a href="http://www.blockr.me">Blockr</a></h3>
+          </div>
+      </div>
+    </div>
+
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+  </body>
+</html>
