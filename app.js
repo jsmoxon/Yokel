@@ -30,7 +30,7 @@
     msgObj = {};
     msgObj[MSG_USER_KEY] = getUser();
     msgObj[MSG_MSG_KEY] = msg;
-    return getChatList.push(msgObj);
+    return getChatList().push(msgObj);
   };
 
   getUser = function() {

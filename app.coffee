@@ -16,7 +16,7 @@ addMsgToModel = (msg) =>
     msgObj = {}
     msgObj[MSG_USER_KEY] = getUser()
     msgObj[MSG_MSG_KEY] = msg
-    getChatList.push msgObj
+    getChatList().push msgObj
 
 getUser = () => 'anon'
 
