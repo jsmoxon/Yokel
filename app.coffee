@@ -50,10 +50,10 @@ setupChatListener = () =>
         addMsgToDOM structureMessage last
 
 structureMessage = (msg) =>
-    msg.get(MSG_USER_KEY) + ": " + msg.get(MSG_MSG_KEY)
+    msg[MSG_USER_KEY] + ": " + msg[MSG_MSG_KEY]
 
 addMsgToDOM = (msg) =>
-    $("#chat-box").append $("<li>").text msg
+    $("#chat-box").append $("<li>").text structureMessage msg
 
 
 $ () =>

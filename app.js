@@ -85,11 +85,11 @@
   };
 
   structureMessage = function(msg) {
-    return msg.get(MSG_USER_KEY) + ": " + msg.get(MSG_MSG_KEY);
+    return msg[MSG_USER_KEY] + ": " + msg[MSG_MSG_KEY];
   };
 
   addMsgToDOM = function(msg) {
-    return $("#chat-box").append($("<li>").text(msg));
+    return $("#chat-box").append($("<li>").text(structureMessage(msg)));
   };
 
   $(function() {
