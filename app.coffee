@@ -2,6 +2,7 @@ NEW_VISIT_MEMORY = 20
 CL_KEY = 'cl'
 MSG_USER_KEY = 'msg-user'
 MSG_MSG_KEY = 'msg-msg'
+document.name = "unknown"
 setModel = (model) =>
     document.model = model
 
@@ -14,11 +15,9 @@ initializeModel = (model) =>
 
 addMsgToModel = (msg) =>
     msgObj = {}
-    msgObj[MSG_USER_KEY] = getUser()
+    msgObj[MSG_USER_KEY] = getName()
     msgObj[MSG_MSG_KEY] = msg
     getChatList().push msgObj
-
-getUser = () => 'anon'
 
 createChatList = () =>
     list = getModel().createList()
@@ -42,6 +41,17 @@ populateTailList = (nElem) =>
 
 setupListeners = () =>
     setupChatListener()
+
+
+fetchName = ()
+  request = gapi.client.drive.about.get()
+  request.execute (resp) => setName resp.name
+
+setName = (name) =>
+    document.name = name
+
+getName = () =>
+    document.name
 
 setupChatListener = () =>
     list = getChatList()
