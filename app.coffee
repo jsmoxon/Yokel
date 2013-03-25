@@ -2,6 +2,7 @@ NEW_VISIT_MEMORY = 20
 CL_KEY = 'cl'
 MSG_USER_KEY = 'msg-user'
 MSG_MSG_KEY = 'msg-msg'
+document.name = "unknown"
 setModel = (model) =>
     document.model = model
 
@@ -14,15 +15,13 @@ initializeModel = (model) =>
 
 addMsgToModel = (msg) =>
     msgObj = {}
-    msgObj[MSG_USER_KEY] = getUser()
+    msgObj[MSG_USER_KEY] = getName()
     msgObj[MSG_MSG_KEY] = msg
-    getChatList.push msgObj
-
-getUser = () => 'anon'
+    getChatList().push msgObj
 
 createChatList = () =>
     list = getModel().createList()
-    getModel().getRoot().put(CL_KEY,list)
+    getModel().getRoot().set(CL_KEY,list)
 
 getChatList = () =>
     getModel().getRoot().get(CL_KEY)
@@ -31,34 +30,47 @@ createPictureBox = () =>
     'hello'
 
 initializeDocument = (doc) =>
+    fetchName()
+    setModel doc.getModel()
     populateTailList NEW_VISIT_MEMORY
     setupListeners()
 
 populateTailList = (nElem) =>
     lastIndex = getChatList().length - 1
     firstIndex = Math.max 0, (lastIndex - nElem)
-    addMsgToDOM(msg) for msg in getChatList().toArray()[firstIndex..lastIndex]
+    addMsgToDOM(msg) for msg in getChatList().asArray()[firstIndex..lastIndex]
 
 setupListeners = () =>
     setupChatListener()
 
+
+fetchName = () =>
+  request = gapi.client.drive.about.get()
+  request.execute (resp) => setName resp.name
+
+setName = (name) =>
+    document.name = name
+
+getName = () =>
+    document.name
+
 setupChatListener = () =>
     list = getChatList()
     list.addEventListener gapi.drive.realtime.EventType.VALUES_ADDED, () =>
-        last = list.get (list.length - 1)
-        addMsgToDOM structureMessage last
+        last = list.get(list.length - 1)
+        addMsgToDOM(last)
 
 structureMessage = (msg) =>
-    msg.get(MSG_USER_KEY) + ": " + msg.get(MSG_MSG_KEY)
+    msg[MSG_USER_KEY] + ": " + msg[MSG_MSG_KEY]
 
 addMsgToDOM = (msg) =>
-    $("#chat-box").append $("<li>").text msg
+    $("#chat-box").append $("<li>").text structureMessage msg
 
 
 $ () =>
     $("#send-msg").click () =>
-        addMsgToDOM $('#send-msg-input').text()
-        $('#send-msg-input').text('')
+        addMsgToModel $('#send-msg-input').val()
+        $('#send-msg-input').val('')
     realtimeOptions =
       clientId: '1054403106878-921pg354ijlmghqhfu1kc5tb9jjfsbm7.apps.googleusercontent.com',
       authButtonElementId: 'authorizeButton',
