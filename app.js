@@ -95,8 +95,8 @@
   $(function() {
     var realtimeLoader, realtimeOptions;
     $("#send-msg").click(function() {
-      addMsgToDOM($('#send-msg-input').text());
-      return $('#send-msg-input').text('');
+      addMsgToDOM($('#send-msg-input').val());
+      return $('#send-msg-input').val('');
     });
     realtimeOptions = {
       clientId: '1054403106878-921pg354ijlmghqhfu1kc5tb9jjfsbm7.apps.googleusercontent.com',
