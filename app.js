@@ -40,7 +40,7 @@
   createChatList = function() {
     var list;
     list = getModel().createList();
-    return getModel().getRoot().put(CL_KEY, list);
+    return getModel().getRoot().set(CL_KEY, list);
   };
 
   getChatList = function() {
@@ -52,6 +52,7 @@
   };
 
   initializeDocument = function(doc) {
+    setModel(doc.getModel());
     populateTailList(NEW_VISIT_MEMORY);
     return setupListeners();
   };
