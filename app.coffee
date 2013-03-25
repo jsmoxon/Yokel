@@ -46,8 +46,8 @@ setupListeners = () =>
 setupChatListener = () =>
     list = getChatList()
     list.addEventListener gapi.drive.realtime.EventType.VALUES_ADDED, () =>
-        last = list.get (list.length - 1)
-        addMsgToDOM structureMessage last
+        last = list.get(list.length - 1)
+        addMsgToDOM(last)
 
 structureMessage = (msg) =>
     msg[MSG_USER_KEY] + ": " + msg[MSG_MSG_KEY]

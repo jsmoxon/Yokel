@@ -80,7 +80,7 @@
     return list.addEventListener(gapi.drive.realtime.EventType.VALUES_ADDED, function() {
       var last;
       last = list.get(list.length - 1);
-      return addMsgToDOM(structureMessage(last));
+      return addMsgToDOM(last);
     });
   };
 
