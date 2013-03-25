@@ -61,7 +61,7 @@
     var firstIndex, lastIndex, msg, _i, _len, _ref, _results;
     lastIndex = getChatList().length - 1;
     firstIndex = Math.max(0, lastIndex - nElem);
-    _ref = getChatList().toArray().slice(firstIndex, +lastIndex + 1 || 9e9);
+    _ref = getChatList().asArray().slice(firstIndex, +lastIndex + 1 || 9e9);
     _results = [];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       msg = _ref[_i];

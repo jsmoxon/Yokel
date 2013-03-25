@@ -38,7 +38,7 @@ initializeDocument = (doc) =>
 populateTailList = (nElem) =>
     lastIndex = getChatList().length - 1
     firstIndex = Math.max 0, (lastIndex - nElem)
-    addMsgToDOM(msg) for msg in getChatList().toArray()[firstIndex..lastIndex]
+    addMsgToDOM(msg) for msg in getChatList().asArray()[firstIndex..lastIndex]
 
 setupListeners = () =>
     setupChatListener()
