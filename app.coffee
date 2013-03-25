@@ -30,6 +30,7 @@ createPictureBox = () =>
     'hello'
 
 initializeDocument = (doc) =>
+    fetchName()
     setModel doc.getModel()
     populateTailList NEW_VISIT_MEMORY
     setupListeners()
@@ -43,7 +44,7 @@ setupListeners = () =>
     setupChatListener()
 
 
-fetchName = ()
+fetchName = () =>
   request = gapi.client.drive.about.get()
   request.execute (resp) => setName resp.name
 
