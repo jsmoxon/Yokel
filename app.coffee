@@ -22,7 +22,7 @@ getUser = () => 'anon'
 
 createChatList = () =>
     list = getModel().createList()
-    getModel().getRoot().put(CL_KEY,list)
+    getModel().getRoot().set(CL_KEY,list)
 
 getChatList = () =>
     getModel().getRoot().get(CL_KEY)
@@ -31,6 +31,7 @@ createPictureBox = () =>
     'hello'
 
 initializeDocument = (doc) =>
+    setModel doc.getModel()
     populateTailList NEW_VISIT_MEMORY
     setupListeners()
 
