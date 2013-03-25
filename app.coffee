@@ -75,6 +75,7 @@ setupChatListener = () =>
         last = list.get(list.length - 1)
         addMsgToDOM(last)
 
+
 structureMessage = (msg) =>
     msg[MSG_USER_KEY] + ": " + msg[MSG_MSG_KEY]
 
@@ -86,6 +87,11 @@ $ () =>
     $("#send-msg").click () =>
         addMsgToModel $('#send-msg-input').val()
         $('#send-msg-input').val('')
+    $("#div").bind "keypress", (event) =>
+        if (event.which == 13)
+            event.preventDefault()
+            addMsgToModel $('#send-msg-input').val()
+            $('#send-msg-input').val('')
     realtimeOptions =
       clientId: '1054403106878-921pg354ijlmghqhfu1kc5tb9jjfsbm7.apps.googleusercontent.com',
       authButtonElementId: 'authorizeButton',

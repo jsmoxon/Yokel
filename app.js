@@ -147,6 +147,13 @@
       addMsgToModel($('#send-msg-input').val());
       return $('#send-msg-input').val('');
     });
+    $("#div").bind("keypress", function(event) {
+      if (event.which === 13) {
+        event.preventDefault();
+        addMsgToModel($('#send-msg-input').val());
+        return $('#send-msg-input').val('');
+      }
+    });
     realtimeOptions = {
       clientId: '1054403106878-921pg354ijlmghqhfu1kc5tb9jjfsbm7.apps.googleusercontent.com',
       authButtonElementId: 'authorizeButton',
