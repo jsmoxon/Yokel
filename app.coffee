@@ -58,7 +58,7 @@ addMsgToDOM = (msg) =>
 
 $ () =>
     $("#send-msg").click () =>
-        addMsgToDOM $('#send-msg-input').val()
+        addMsgToModel $('#send-msg-input').val()
         $('#send-msg-input').val('')
     realtimeOptions =
       clientId: '1054403106878-921pg354ijlmghqhfu1kc5tb9jjfsbm7.apps.googleusercontent.com',

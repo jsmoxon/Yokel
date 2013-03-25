@@ -95,7 +95,7 @@
   $(function() {
     var realtimeLoader, realtimeOptions;
     $("#send-msg").click(function() {
-      addMsgToDOM($('#send-msg-input').val());
+      addMsgToModel($('#send-msg-input').val());
       return $('#send-msg-input').val('');
     });
     realtimeOptions = {
