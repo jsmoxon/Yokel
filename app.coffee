@@ -6,6 +6,14 @@ document.name = "unknown"
 setModel = (model) =>
     document.model = model
 
+setDocument = (doc)=>
+    document.document = doc
+
+getDocument = ()=> document.document
+
+getCollaborators = () =>
+    getDocument().getCollaborators()
+
 getModel = () => document.model
 
 initializeModel = (model) =>
@@ -19,6 +27,8 @@ addMsgToModel = (msg) =>
     msgObj[MSG_MSG_KEY] = msg
     getChatList().push msgObj
 
+
+
 createChatList = () =>
     list = getModel().createList()
     getModel().getRoot().set(CL_KEY,list)
@@ -30,8 +40,9 @@ createPictureBox = () =>
     'hello'
 
 initializeDocument = (doc) =>
-    fetchName()
+    setDocument doc
     setModel doc.getModel()
+    fetchName()
     populateTailList NEW_VISIT_MEMORY
     setupListeners()
 
@@ -45,8 +56,7 @@ setupListeners = () =>
 
 
 fetchName = () =>
-  request = gapi.client.drive.about.get()
-  request.execute (resp) => setName resp.name
+  setName ((collab['displayName'] for collab in getCollaborators() when collab['isMe'])[0])
 
 setName = (name) =>
     document.name = name
