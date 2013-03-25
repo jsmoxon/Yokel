@@ -45,6 +45,11 @@ initializeDocument = (doc) =>
     fetchName()
     populateTailList NEW_VISIT_MEMORY
     setupListeners()
+    setupCollaboratorsDOM()
+
+setupCollaboratorsDOM = () =>
+    dom = $("#who-in-room")
+    dom.append($("<li>").text(collab['displayName'])) for collab in getCollaborators()
 
 populateTailList = (nElem) =>
     lastIndex = getChatList().length - 1
