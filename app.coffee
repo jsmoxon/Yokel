@@ -51,6 +51,7 @@ initializeDocument = (doc) =>
     setModel doc.getModel()
     fetchName()
     populateTailList NEW_VISIT_MEMORY
+    setPictureBoxLocal()
     setupListeners()
     setupCollaboratorsDOM()
 
