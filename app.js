@@ -229,7 +229,7 @@
   $(function() {
     var realtimeLoader, realtimeOptions;
     realtimeOptions = {
-      clientId: '1054403106878-921pg354ijlmghqhfu1kc5tb9jjfsbm7.apps.googleusercontent.com',
+      clientId: '761917360771.apps.googleusercontent.com',
       authButtonElementId: 'authorizeButton',
       initializeModel: initializeModel,
       autoCreate: true,
