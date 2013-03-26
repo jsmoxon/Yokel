@@ -140,9 +140,12 @@
   };
 
   //clears counter in tab title
-  $('body').click(function() {
-	  document.title = "Yokel";  
-      });
+  //  $('body').click(function() {
+  //  document.title = "Yokel";  
+  //  });
+  clearTitlePing = function() {
+      document.title = "Yokel";
+  };
 
   structureMessage = function(msg) {
     return msg[MSG_USER_KEY] + ": " + msg[MSG_MSG_KEY];
@@ -179,7 +182,7 @@
 
 }).call(this);
 
-//scrolling attempt
+//scrolling
 window.setInterval(function() {
 	var elem = document.getElementById('chatboxdiv');
 	elem.scrollTop = elem.scrollHeight;
