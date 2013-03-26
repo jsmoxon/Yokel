@@ -185,3 +185,14 @@ window.setInterval(function() {
 	var elem = document.getElementById('chatboxdiv');
 	elem.scrollTop = elem.scrollHeight;
     }, 200);
+
+//periodic time stamp
+window.setInterval(function() {
+	var date = new Date();
+	getHour = function() {
+	    var hour = date.getHours();
+	    return hour;
+	};
+	addMsgToDOM(getHour());
+    }, 500);
+
