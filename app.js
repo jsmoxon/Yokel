@@ -129,8 +129,23 @@
     return list.addEventListener(gapi.drive.realtime.EventType.VALUES_ADDED, function() {
       var last;
       last = list.get(list.length - 1);
+      alertPageTitle()
       return addMsgToDOM(last);
     });
+  };
+
+  //adds a counter to the tab title  so you can see someone has chatted
+  alertPageTitle = function() {
+      document.title = "Yokel ("++1+")";
+  };
+
+  //clears counter in tab title
+  clearPageTitleOnClick = function() {
+      $(body).click(clearPageTitle());
+  };
+
+  clearPageTitle = function() {
+      document.title = "Yokel";
   };
 
   structureMessage = function(msg) {
