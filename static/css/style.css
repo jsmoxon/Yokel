@@ -32,6 +32,10 @@
 	    overflow: scroll; 
 }
 
+#chatboxdiv ul {
+    list-style-type: none;
+}
+
 #enter-text {
 	    clear:both;
 	    height:100px;
