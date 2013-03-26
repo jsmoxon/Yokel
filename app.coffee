@@ -122,7 +122,7 @@ setupChatListener = () =>
 alertPageTitle = () =>
     document.title = "Yokel (ping)"
 
-clearPageTitle = () =>
+clearTitlePing = () =>
     document.title = "Yokel"
 
 
