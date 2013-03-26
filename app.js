@@ -140,9 +140,6 @@
   };
 
   //clears counter in tab title
-  //  $('body').click(function() {
-  //  document.title = "Yokel";  
-  //  });
   clearTitlePing = function() {
       document.title = "Yokel";
   };
@@ -165,6 +162,7 @@
       if (event.which === 13) {
         event.preventDefault();
         addMsgToModel($('#send-msg-input').val());
+	clearTitlePing();
         return $('#send-msg-input').val('');
       }
     });
