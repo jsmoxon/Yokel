@@ -148,7 +148,7 @@
   };
 
   setupPictureBoxListener = function() {
-    return getModel().getRoot().addEventListener(gapi.drive.realtime.EventType.VALUES_ADDED, function() {
+    return getModel().getRoot().addEventListener(gapi.drive.realtime.EventType.VALUE_CHANGED, function() {
       return setPictureBoxLocal();
     });
   };

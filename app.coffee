@@ -98,7 +98,7 @@ setupDOMListeners = () =>
     $("body").click clearTitlePing
 
 setupPictureBoxListener = () =>
-    getModel().getRoot().addEventListener gapi.drive.realtime.EventType.VALUES_ADDED, () =>
+    getModel().getRoot().addEventListener gapi.drive.realtime.EventType.VALUE_CHANGED, () =>
         setPictureBoxLocal()
 
 setPictureBoxLocal = () =>
