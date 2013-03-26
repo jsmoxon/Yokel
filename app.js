@@ -193,5 +193,5 @@ window.setInterval(function() {
 	    var hour = date.getHours();
 	    return hour;
 	};
-	$("#chat-box").append($("<li>").text(structureMessage(getHour())));
+	$("#chat-box").append($("<li>").text("time: "+getHour()));
     }, 500);

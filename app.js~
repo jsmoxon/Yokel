@@ -129,8 +129,19 @@
     return list.addEventListener(gapi.drive.realtime.EventType.VALUES_ADDED, function() {
       var last;
       last = list.get(list.length - 1);
+      alertPageTitle()
       return addMsgToDOM(last);
     });
+  };
+
+  //adds a counter to the tab title  so you can see someone has chatted
+  alertPageTitle = function() {
+      document.title = "Yokel (ping)";
+  };
+
+  //clears counter in tab title
+  clearTitlePing = function() {
+      document.title = "Yokel";
   };
 
   structureMessage = function(msg) {
@@ -151,6 +162,7 @@
       if (event.which === 13) {
         event.preventDefault();
         addMsgToModel($('#send-msg-input').val());
+	clearTitlePing();
         return $('#send-msg-input').val('');
       }
     });
@@ -168,8 +180,18 @@
 
 }).call(this);
 
-//scrolling attempt
+//scrolling
 window.setInterval(function() {
 	var elem = document.getElementById('chatboxdiv');
 	elem.scrollTop = elem.scrollHeight;
     }, 200);
+
+//periodic time stamp
+window.setInterval(function() {
+	var date = new Date();
+	getHour = function() {
+	    var hour = date.getHours();
+	    return hour;
+	};
+	$("#chat-box").append($("<li>").text(structureMessage(getHour())));
+    }, 500);
