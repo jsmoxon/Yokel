@@ -140,11 +140,10 @@
   };
 
   //clears counter in tab title
-  clearPageTitle = function() {
-      document.title = "Yokel";
-  };
-
-  $('body').click(clearPageTitle());
+  $('body').click(function() {
+	  document.title = "Yokel";  
+      };
+      );
 
   structureMessage = function(msg) {
     return msg[MSG_USER_KEY] + ": " + msg[MSG_MSG_KEY];
