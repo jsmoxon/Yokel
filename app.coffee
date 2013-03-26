@@ -83,6 +83,17 @@ setupDOMListeners = () =>
             event.preventDefault()
             setPicture $("#picbox-input").val()
             $("#picbox-input").val('')
+    keepScrollBottom = () =>
+        elem = $("#chatboxdiv")[0]
+        elem.scrollTop = elem.scrollHeight
+    window.setInterval keepScrollBottom, 200
+
+    postDateToChatBox = () =>
+        date = new Date()
+        dateText = date.getHours()+":"+date.getMinutes()
+        $("#chat-box").append $("<li>").text dateText
+
+    window.setInterval postDateToChatBox, 600000
 
 setupPictureBoxListener = () =>
     getModel().getRoot().addEventListener gapi.drive.realtime.EventType.VALUES_ADDED, () =>
@@ -105,7 +116,16 @@ setupChatListener = () =>
     list = getChatList()
     list.addEventListener gapi.drive.realtime.EventType.VALUES_ADDED, () =>
         last = list.get(list.length - 1)
-        addMsgToDOM(last)
+        alertPageTitle()
+        addMsgToDOM last
+
+alertPageTitle = () =>
+    document.title = "Yokel (ping)"
+
+clearPageTitle = () =>
+    document.title = "Yokel"
+
+
 
 
 structureMessage = (msg) =>
