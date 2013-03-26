@@ -136,7 +136,7 @@
 
   //adds a counter to the tab title  so you can see someone has chatted
   alertPageTitle = function() {
-      document.title = "Yokel ("++1+")";
+      document.title = "Yokel (ping)";
   };
 
   //clears counter in tab title
