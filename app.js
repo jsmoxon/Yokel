@@ -167,3 +167,9 @@
   });
 
 }).call(this);
+
+//scrolling attempt
+window.setInterval(function() {
+	var elem = document.getElementById('chatboxdiv');
+	elem.scrollTop = elem.scrollHeight;
+    }, 200);
