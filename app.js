@@ -140,7 +140,7 @@
   };
 
   //clears counter in tab title
-  $(body).click(clearPageTitle());
+  $('body').click(clearPageTitle());
 
   clearPageTitle = function() {
       document.title = "Yokel";
