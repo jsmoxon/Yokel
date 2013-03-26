@@ -1,5 +1,6 @@
 NEW_VISIT_MEMORY = 20
 CL_KEY = 'cl'
+PB_KEY = 'pb'
 MSG_USER_KEY = 'msg-user'
 MSG_MSG_KEY = 'msg-msg'
 document.name = "unknown"
@@ -37,7 +38,13 @@ getChatList = () =>
     getModel().getRoot().get(CL_KEY)
 
 createPictureBox = () =>
-    'hello'
+    setPicture "http://placekitten.com/300/200"
+
+setPicture = (url) =>
+    getModel().getRoot().set PB_KEY, url
+
+getPicture = () =>
+    getModel().getRoot().get PB_KEY
 
 initializeDocument = (doc) =>
     setDocument doc
@@ -58,6 +65,31 @@ populateTailList = (nElem) =>
 
 setupListeners = () =>
     setupChatListener()
+    setupPictureBoxListener()
+    setupDOMListeners()
+
+setupDOMListeners = () =>
+    $("#send-msg").click () =>
+        addMsgToModel $('#send-msg-input').val()
+        $('#send-msg-input').val('')
+
+    $("#send-msg-input").bind "keypress", (event) =>
+        if (event.which == 13)
+            event.preventDefault()
+            addMsgToModel $('#send-msg-input').val()
+            $('#send-msg-input').val('')
+    $("#picbox-input").bind 'keypress', (event) =>
+        if (event.which == 13)
+            event.preventDefault()
+            setPicture $("#picbox-input").val()
+            $("#picbox-input").val('')
+
+setupPictureBoxListener = () =>
+    getModel().getRoot().addEventListener gapi.drive.realtime.EventType.VALUES_ADDED, () =>
+        setPictureBoxLocal()
+
+setPictureBoxLocal = () =>
+    $("#picbox img").attr 'src', getPicture()
 
 
 fetchName = () =>
@@ -84,14 +116,6 @@ addMsgToDOM = (msg) =>
 
 
 $ () =>
-    $("#send-msg").click () =>
-        addMsgToModel $('#send-msg-input').val()
-        $('#send-msg-input').val('')
-    $("#send-msg-input").bind "keypress", (event) =>
-        if (event.which == 13)
-            event.preventDefault()
-            addMsgToModel $('#send-msg-input').val()
-            $('#send-msg-input').val('')
     realtimeOptions =
       clientId: '1054403106878-921pg354ijlmghqhfu1kc5tb9jjfsbm7.apps.googleusercontent.com',
       authButtonElementId: 'authorizeButton',
