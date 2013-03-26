@@ -77,10 +77,10 @@ setupListeners = () =>
 
 setupUpdateCollaboratorsListener = () =>
     doc = getDocument()
-    doc.addEventListener gapi.drive.realtime.CollaboratorJoinedEvent, (event) =>
+    doc.addEventListener gapi.drive.realtime.EventType.COLLABORATOR_JOINED, (event) =>
         addCollaboratorToDOM event.collaborator
 
-    doc.addEventListener gapi.drive.realtime.CollaboratorJoinedEvent, (event) =>
+    doc.addEventListener gapi.drive.realtime.EventType.COLLABORATOR_LEFT, (event) =>
         alert event.collaborator['displayName'] + " left the room."
 
 

@@ -121,10 +121,10 @@
   setupUpdateCollaboratorsListener = function() {
     var doc;
     doc = getDocument();
-    doc.addEventListener(gapi.drive.realtime.CollaboratorJoinedEvent, function(event) {
+    doc.addEventListener(gapi.drive.realtime.EventType.COLLABORATOR_JOINED, function(event) {
       return addCollaboratorToDOM(event.collaborator);
     });
-    return doc.addEventListener(gapi.drive.realtime.CollaboratorJoinedEvent, function(event) {
+    return doc.addEventListener(gapi.drive.realtime.EventType.COLLABORATOR_LEFT, function(event) {
       return alert(event.collaborator['displayName'] + " left the room.");
     });
   };
