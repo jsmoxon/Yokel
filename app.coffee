@@ -56,8 +56,13 @@ initializeDocument = (doc) =>
     setupCollaboratorsDOM()
 
 setupCollaboratorsDOM = () =>
+    addCollaboratorToDOM collab for collab in getCollaborators()
+
+addCollaboratorToDOM = (collab) =>
     dom = $("#who-in-room")
-    dom.append($("<li>").text(collab['displayName'])) for collab in getCollaborators()
+    dom.append($("<li>").text(collab['displayName']))
+
+
 
 populateTailList = (nElem) =>
     lastIndex = getChatList().length - 1
@@ -68,6 +73,16 @@ setupListeners = () =>
     setupChatListener()
     setupPictureBoxListener()
     setupDOMListeners()
+    setupUpdateCollaboratorsListener()
+
+setupUpdateCollaboratorsListener = () =>
+    doc = getDocument()
+    doc.addEventListener gapi.drive.realtime.CollaboratorJoinedEvent, (event) =>
+        addCollaboratorToDOM event.collaborator
+
+    doc.addEventListener gapi.drive.realtime.CollaboratorJoinedEvent, (event) =>
+        alert event.collaborator['displayName'] + " left the room."
+
 
 setupDOMListeners = () =>
     $("#send-msg").click () =>
