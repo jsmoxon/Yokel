@@ -140,9 +140,7 @@
   };
 
   //clears counter in tab title
-  clearPageTitleOnClick = function() {
-      $(body).click(clearPageTitle());
-  };
+  $(body).click(clearPageTitle());
 
   clearPageTitle = function() {
       document.title = "Yokel";
