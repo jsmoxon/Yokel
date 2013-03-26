@@ -95,6 +95,8 @@ setupDOMListeners = () =>
 
     window.setInterval postDateToChatBox, 600000
 
+    $("body").click clearTitlePing
+
 setupPictureBoxListener = () =>
     getModel().getRoot().addEventListener gapi.drive.realtime.EventType.VALUES_ADDED, () =>
         setPictureBoxLocal()

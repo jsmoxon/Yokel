@@ -143,7 +143,8 @@
       dateText = date.getHours() + ":" + date.getMinutes();
       return $("#chat-box").append($("<li>").text(dateText));
     };
-    return window.setInterval(postDateToChatBox, 600000);
+    window.setInterval(postDateToChatBox, 600000);
+    return $("body").click(clearTitlePing);
   };
 
   setupPictureBoxListener = function() {
