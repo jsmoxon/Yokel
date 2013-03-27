@@ -158,7 +158,8 @@ setupChatListener = () =>
         last = list.get(list.length - 1)
         alertPageTitle()
         addMsgToDOM last
-setupChatListener = () =>
+
+setupLinkListListener = () =>
     list = getLinkList()
     list.addEventListener gapi.drive.realtime.EventType.VALUES_ADDED, () =>
         last = list.get(list.length - 1)
