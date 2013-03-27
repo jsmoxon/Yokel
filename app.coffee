@@ -219,9 +219,10 @@ setPictureBoxLocal = () =>
         $("#picbox img").show().attr 'src', getPicture()
 
 playYoutubeUrl = (url) =>
-    params = { allowScriptAccess: "always" }
-    atts = { id: "myytplayer" }
-    swfobject.embedSWF(url,"ytapiplayer", "425", "356", "8", null, null, params, atts)
+    vId = url[(url.indexOf("="))...]
+    html = '''<iframe width="420" height="315" src="http://www.youtube.com/embed/''' + vId + '''" frameborder="0" allowfullscreen></iframe>'''
+    $("ytapiplayer").html html
+
 
 fetchName = () =>
   setName ((collab['displayName'] for collab in getCollaborators() when collab['isMe'])[0])

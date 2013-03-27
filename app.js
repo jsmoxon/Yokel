@@ -319,14 +319,10 @@
   };
 
   playYoutubeUrl = function(url) {
-    var atts, params;
-    params = {
-      allowScriptAccess: "always"
-    };
-    atts = {
-      id: "myytplayer"
-    };
-    return swfobject.embedSWF(url, "ytapiplayer", "425", "356", "8", null, null, params, atts);
+    var html, vId;
+    vId = url.slice(url.indexOf("="));
+    html = '<iframe width="420" height="315" src="http://www.youtube.com/embed/' + vId + '" frameborder="0" allowfullscreen></iframe>';
+    return $("ytapiplayer").html(html);
   };
 
   fetchName = function() {
