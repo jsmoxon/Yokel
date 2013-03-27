@@ -65,9 +65,28 @@ initializeDocument = (doc) =>
     if titleInitialized() then setTitleInDOM() else fetchTitle()
     populateTailList NEW_VISIT_MEMORY_CL
     populateLinkList NEW_VISIT_MEMORY_LL
+    populateRecentChats()
     setPictureBoxLocal()
     setupListeners()
     setupCollaboratorsDOM()
+
+populateRecentChats = () =>
+    gapi.client.load "drive", "v2", () =>
+        gapi.client.drive.files.list().execute (list) =>
+            (addRecentChatToDOM(doc) for doc in list.items if isUntrashedYokelChat doc)
+
+isUntrashedYokelChat = (doc) =>
+    mime = "application/vnd.google-apps.drive-sdk.761917360771"
+    doc.mimeType == mime and not doc.labels.trashed
+
+
+addRecentChatToDOM = (chat) =>
+    link = chat.alternateLink
+    title = chat.title
+    $("#recent-chats").append(
+      $("<li>").append(
+        $("<a>").attr("href", link).text(title)
+        ))
 
 titleInitialized = () =>
     getModel().getRoot().has TITLE_KEY
