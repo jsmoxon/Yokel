@@ -160,7 +160,7 @@ setupChangeTitleListener = () =>
     $("#new-title-input").bind "keypress", (event) =>
         if (event.which == 13)
             event.preventDefault()
-            setTitle $("#new-title-input").val()
+            updateTitle $("#new-title-input").val()
             $("#new-title-input").val("")
             $('#doc-title-modal').modal 'hide'
 
@@ -238,9 +238,13 @@ getTitle = () =>
   getModel().getRoot().get TITLE_KEY
 
 setTitleInDOM = () =>
-    $("#doc-title").text ": " + getTitle()
+    setTitleInDOMText getTitle()
 
-updateTitleOnDoc = (title) =>
+setTitleInDOMText = (txt) =>
+    $("#doc-title").text(": " + txt)
+
+updateTitle = (title) =>
+  setTitleInDOMText title
   requestData =
         'path': '/drive/v2/files/' + fileId()
         'method': 'PUT'
@@ -252,6 +256,8 @@ updateTitleOnDoc = (title) =>
         'body': JSON.stringify
           'title': title
   gapi.client.request requestData, () =>
+    setTitle title
+
 
 
 $ () =>
