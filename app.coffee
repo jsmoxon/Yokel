@@ -83,17 +83,25 @@ setupUpdateCollaboratorsListener = () =>
     doc.addEventListener gapi.drive.realtime.EventType.COLLABORATOR_LEFT, (event) =>
         alert event.collaborator['displayName'] + " left the room."
 
+postMessage = () =>
+    msg = $('#send-msg-input').val()
+    addMsgToModel msg
+    $('#send-msg-input').val('')
+    handleSmartMessage msg
+
+handleSmartMessage = (msg) =>
+    if msg.length > 4
+        if msg[..3] == 'pic:'
+            setPicture msg[4..]
 
 setupDOMListeners = () =>
     $("#send-msg").click () =>
-        addMsgToModel $('#send-msg-input').val()
-        $('#send-msg-input').val('')
+        postMessage()
 
     $("#send-msg-input").bind "keypress", (event) =>
         if (event.which == 13)
             event.preventDefault()
-            addMsgToModel $('#send-msg-input').val()
-            $('#send-msg-input').val('')
+            postMessage()
     $("#picbox-input").bind 'keypress', (event) =>
         if (event.which == 13)
             event.preventDefault()
