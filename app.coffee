@@ -3,6 +3,7 @@ NEW_VISIT_MEMORY_LL = 5
 CL_KEY = 'cl'
 PB_KEY = 'pb'
 LL_KEY = 'll'
+TITLE_KEY = 'title'
 MSG_USER_KEY = 'msg-user'
 MSG_MSG_KEY = 'msg-msg'
 document.name = "unknown"
@@ -61,12 +62,15 @@ initializeDocument = (doc) =>
     setDocument doc
     setModel doc.getModel()
     fetchName()
-    fetchTitle()
+    if titleInitialized() then setTitleInDOM() else fetchTitle()
     populateTailList NEW_VISIT_MEMORY_CL
     populateLinkList NEW_VISIT_MEMORY_LL
     setPictureBoxLocal()
     setupListeners()
     setupCollaboratorsDOM()
+
+titleInitialized = () =>
+    getModel().getRoot().has TITLE_KEY
 
 setupCollaboratorsDOM = () =>
     addCollaboratorToDOM collab for collab in getCollaborators()
@@ -89,8 +93,14 @@ setupListeners = () =>
     setupChatListener()
     setupPictureBoxListener()
     setupLinkListListener()
+    setupTitleListener()
     setupDOMListeners()
     setupUpdateCollaboratorsListener()
+
+setupTitleListener = () =>
+    doc.addEventListener gapi.drive.realtime.EventType.VALUE_CHANGED, (event) =>
+        if event.property == TITLE_KEY
+            setTitleInDOM()
 
 setupUpdateCollaboratorsListener = () =>
     doc = getDocument()
@@ -138,6 +148,25 @@ setupDOMListeners = () =>
 
     $("body").click clearTitlePing
     $("#share").click share
+
+    setupChangeTitleListener()
+
+setupChangeTitleListener = () =>
+    $("#doc-title-modal")
+     .hide()
+     .modal({show: false, keyboard: true})
+
+    $("#new-title-input").bind "keypress", (event) =>
+        if (event.which == 13)
+            event.preventDefault()
+            setTitle $("#new-title-input").val()
+            $("#new-title-input").val("")
+            $('#doc-title-modal').modal 'hide'
+
+
+    $("#doc-title").click () =>
+        $('#doc-title-modal').modal 'show'
+
 
 setupPictureBoxListener = () =>
     getModel().getRoot().addEventListener gapi.drive.realtime.EventType.VALUE_CHANGED, () =>
@@ -200,26 +229,28 @@ addMsgToDOM = (msg) =>
 fetchTitle = () =>
     rtclient.getFileMetadata fileId(), (resp) =>
       setTitle resp.title
-      setTitleInDOM()
 
 setTitle = (title) =>
-    document.docTitle = title
+    getModel().getRoot().put TITLE_KEY, title
 
-getTitle = () => document.docTitle
+getTitle = () => 
+  getModel().getRoot().get TITLE_KEY
 
 setTitleInDOM = () =>
     $("#doc-title").text ": " + getTitle()
 
-updateTitle = (title) =>
-  gapi.client.load "drive", "v2", ()  =>
-    gapi.client.drive.files.update
-      'fileId': fileId()
-      'uploadType': 'resumable'
-      'body':
-        'title': title
-      ,
-      (resp) =>
-        console.log resp
+updateTitleOnDoc = (title) =>
+  requestData =
+        'path': '/drive/v2/files/' + fileId()
+        'method': 'PUT'
+        'params': 
+          'uploadType': 'resumable'
+          'alt': 'json'
+        'headers':
+          'Content-Type': 'application/json'
+        'body': JSON.stringify
+          'title': title
+  gapi.client.request requestData, () =>
 
 
 $ () =>
