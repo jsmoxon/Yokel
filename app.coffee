@@ -57,9 +57,9 @@ getPicture = () =>
     getModel().getRoot().get PB_KEY
 
 initializeDocument = (doc) =>
-    $("#authorizeButton").hide()
+    $("#authorizeButton").remove()
     $("#right").show()
-    $("#loading").hide()
+    $("#loading").remove()
     $("#share").show()
     setDocument doc
     setModel doc.getModel()
@@ -75,6 +75,7 @@ initializeDocument = (doc) =>
 populateRecentChats = () =>
     gapi.client.load "drive", "v2", () =>
         gapi.client.drive.files.list({'maxResults': 50}).execute (list) =>
+            $("#loading-recent").remove()
             console.log list
             addRecentChatToDOM(doc) for doc in list.items when (isUntrashedYokelChat(doc))
 

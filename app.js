@@ -87,9 +87,9 @@
   };
 
   initializeDocument = function(doc) {
-    $("#authorizeButton").hide();
+    $("#authorizeButton").remove();
     $("#right").show();
-    $("#loading").hide();
+    $("#loading").remove();
     $("#share").show();
     setDocument(doc);
     setModel(doc.getModel());
@@ -113,6 +113,7 @@
         'maxResults': 50
       }).execute(function(list) {
         var doc, _i, _len, _ref, _results;
+        $("#loading-recent").remove();
         console.log(list);
         _ref = list.items;
         _results = [];
