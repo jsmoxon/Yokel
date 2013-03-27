@@ -61,6 +61,7 @@ initializeDocument = (doc) =>
     setDocument doc
     setModel doc.getModel()
     fetchName()
+    fetchTitle()
     populateTailList NEW_VISIT_MEMORY_CL
     populateLinkList NEW_VISIT_MEMORY_LL
     setPictureBoxLocal()
@@ -178,9 +179,11 @@ clearTitlePing = () =>
     document.title = "Yokel"
 
 
+fileId = () => rtclient.getParams().fileId
+
 share = () =>
     client = new gapi.drive.share.ShareClient('761917360771')
-    client.setItemIds [rtclient.getParams().fileId]
+    client.setItemIds [fileId()]
     client.showSettingsDialog()
 
 
@@ -189,6 +192,20 @@ structureMessage = (msg) =>
 
 addMsgToDOM = (msg) =>
     $("#chat-box").append $("<li>").text structureMessage msg
+
+
+fetchTitle = () =>
+    gapi.client.drive.files.get {'fileId': fileId()}, (resp) => 
+      setTitle resp.title
+      setTitleInDOM()
+
+setTitle = (title) =>
+    document.docTitle = title
+
+getTitle = () => document.docTitle
+
+setTitleInDOM = () =>
+    $("#doc-title").text ": " + getTitle()
 
 
 $ () =>
