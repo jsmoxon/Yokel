@@ -73,7 +73,7 @@ initializeDocument = (doc) =>
 populateRecentChats = () =>
     gapi.client.load "drive", "v2", () =>
         gapi.client.drive.files.list().execute (list) =>
-            (addRecentChatToDOM(doc) for doc in list.items if isUntrashedYokelChat doc)
+            addRecentChatToDOM(doc) for doc in list.items when (isUntrashedYokelChat(doc))
 
 isUntrashedYokelChat = (doc) =>
     mime = "application/vnd.google-apps.drive-sdk.761917360771"

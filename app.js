@@ -109,15 +109,15 @@
     return gapi.client.load("drive", "v2", function() {
       return gapi.client.drive.files.list().execute(function(list) {
         var doc, _i, _len, _ref, _results;
-        if (isUntrashedYokelChat(doc)) {
-          _ref = list.items;
-          _results = [];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            doc = _ref[_i];
+        _ref = list.items;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          doc = _ref[_i];
+          if (isUntrashedYokelChat(doc)) {
             _results.push(addRecentChatToDOM(doc));
           }
-          return _results;
         }
+        return _results;
       });
     });
   };
