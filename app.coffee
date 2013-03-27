@@ -108,6 +108,8 @@ handleSmartMessage = (msg) =>
         setPicture msg[4..]
     if msg.length > 5 and msg[..4] == 'link:'
         addLinkToModel msg[5..]
+    if msg == 'bees'
+        setPicture "http://stream1.gifsoup.com/view1/1416886/oprah-s-bees-o.gif"
 
 addLinkToModel = (link) =>
     getLinkList().push link
