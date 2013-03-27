@@ -255,7 +255,7 @@ updateTitle = (title) =>
           'Content-Type': 'application/json'
         'body': JSON.stringify
           'title': title
-  gapi.client.request requestData, () =>
+  gapi.client.request(requestData).execute () =>
     setTitle title
 
 

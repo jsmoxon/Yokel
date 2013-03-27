@@ -379,7 +379,7 @@
         'title': title
       })
     };
-    return gapi.client.request(requestData, function() {
+    return gapi.client.request(requestData).execute(function() {
       return setTitle(title);
     });
   };
