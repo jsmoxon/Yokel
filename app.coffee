@@ -73,14 +73,17 @@ initializeDocument = (doc) =>
 populateRecentChats = () =>
     gapi.client.load "drive", "v2", () =>
         gapi.client.drive.files.list().execute (list) =>
+            console.log list
             addRecentChatToDOM(doc) for doc in list.items when (isUntrashedYokelChat(doc))
 
 isUntrashedYokelChat = (doc) =>
+    console.log 'checking untrashed'
     mime = "application/vnd.google-apps.drive-sdk.761917360771"
     doc.mimeType == mime and not doc.labels.trashed
 
 
 addRecentChatToDOM = (chat) =>
+    console.log 'adding recent to dom'
     link = chat.alternateLink
     title = chat.title
     $("#recent-chats").append(

@@ -109,6 +109,7 @@
     return gapi.client.load("drive", "v2", function() {
       return gapi.client.drive.files.list().execute(function(list) {
         var doc, _i, _len, _ref, _results;
+        console.log(list);
         _ref = list.items;
         _results = [];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -124,12 +125,14 @@
 
   isUntrashedYokelChat = function(doc) {
     var mime;
+    console.log('checking untrashed');
     mime = "application/vnd.google-apps.drive-sdk.761917360771";
     return doc.mimeType === mime && !doc.labels.trashed;
   };
 
   addRecentChatToDOM = function(chat) {
     var link, title;
+    console.log('adding recent to dom');
     link = chat.alternateLink;
     title = chat.title;
     return $("#recent-chats").append($("<li>").append($("<a>").attr("href", link).text(title)));
