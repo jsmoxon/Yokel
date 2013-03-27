@@ -34,7 +34,11 @@
  <div id="doc-title-modal" class="modal hide fade">
   <input id="new-title-input" type="text" placeholder="New title...">
  </div>
-
+ <button id="authorizeButton" disabled>You must authorize</button>
+ <div id="loading" class="row">
+  <h2>Loading...</h2>
+  <img src="static/img/spinning-loader.gif" />
+ </div>
  <div id="main" class="row">
   <div id="left" class="">
    <div id="chatboxdiv" class="span9">
@@ -47,7 +51,6 @@
  </div>
 
  <div id="right" class="">
-  <button id="authorizeButton" disabled>You must authorize</button>
   <div id="picbox">
     <h3>PicBox</h3>
     <div class="alert alert-info">
