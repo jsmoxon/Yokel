@@ -218,7 +218,7 @@
       return addCollaboratorToDOM(event.collaborator);
     });
     return doc.addEventListener(gapi.drive.realtime.EventType.COLLABORATOR_LEFT, function(event) {
-      return alert(event.collaborator['displayName'] + " left the room.");
+      return console.log(event.collaborator['displayName'] + " left the room.");
     });
   };
 

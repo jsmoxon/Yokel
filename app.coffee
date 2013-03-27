@@ -136,7 +136,7 @@ setupUpdateCollaboratorsListener = () =>
         addCollaboratorToDOM event.collaborator
 
     doc.addEventListener gapi.drive.realtime.EventType.COLLABORATOR_LEFT, (event) =>
-        alert event.collaborator['displayName'] + " left the room."
+        console.log(event.collaborator['displayName'] + " left the room.")
 
 postMessage = () =>
     msg = $('#send-msg-input').val()
