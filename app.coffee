@@ -219,7 +219,7 @@ setPictureBoxLocal = () =>
         $("#picbox img").show().attr 'src', getPicture()
 
 playYoutubeUrl = (url) =>
-    vId = url[(url.indexOf("="))...]
+    vId = url[(url.indexOf("=") + 1)..]
     html = '''<iframe width="420" height="315" src="http://www.youtube.com/embed/''' + vId + '''" frameborder="0" allowfullscreen></iframe>'''
     $("ytapiplayer").html html
 
