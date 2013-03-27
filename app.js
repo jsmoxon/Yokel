@@ -284,6 +284,7 @@
 
   $(function() {
     var realtimeLoader, realtimeOptions;
+    $(".alert").alert();
     realtimeOptions = {
       clientId: '761917360771.apps.googleusercontent.com',
       authButtonElementId: 'authorizeButton',
