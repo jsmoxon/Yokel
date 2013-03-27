@@ -107,7 +107,9 @@
 
   populateRecentChats = function() {
     return gapi.client.load("drive", "v2", function() {
-      return gapi.client.drive.files.list().execute(function(list) {
+      return gapi.client.drive.files.list({
+        'maxResults': 50
+      }).execute(function(list) {
         var doc, _i, _len, _ref, _results;
         console.log(list);
         _ref = list.items;

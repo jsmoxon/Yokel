@@ -40,7 +40,7 @@ rtclient.INSTALL_SCOPE = 'https://www.googleapis.com/auth/drive.install'
  * OAuth 2.0 scope for opening and creating files.
  * @const
  */
-rtclient.FILE_SCOPE = 'https://www.googleapis.com/auth/drive.file'
+rtclient.FILE_SCOPE = 'https://www.googleapis.com/auth/drive'
 
 
 /**

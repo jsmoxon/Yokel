@@ -72,7 +72,7 @@ initializeDocument = (doc) =>
 
 populateRecentChats = () =>
     gapi.client.load "drive", "v2", () =>
-        gapi.client.drive.files.list().execute (list) =>
+        gapi.client.drive.files.list({'maxResults': 50}).execute (list) =>
             console.log list
             addRecentChatToDOM(doc) for doc in list.items when (isUntrashedYokelChat(doc))
 
