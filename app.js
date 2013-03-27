@@ -195,9 +195,7 @@
   };
 
   setupTitleListener = function() {
-    var doc;
-    doc = getDocument();
-    return doc.addEventListener(gapi.drive.realtime.EventType.VALUE_CHANGED, function(event) {
+    return getModel().getRoot().addEventListener(gapi.drive.realtime.EventType.VALUE_CHANGED, function(event) {
       if (event.property === TITLE_KEY) {
         return setTitleInDOM();
       }
