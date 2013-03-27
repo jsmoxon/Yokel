@@ -297,9 +297,7 @@
   };
 
   fetchTitle = function() {
-    return gapi.client.drive.files.get({
-      'fileId': fileId()
-    }, function(resp) {
+    return rtclient.getFileMetadata(fileId(), function(resp) {
       setTitle(resp.title);
       return setTitleInDOM();
     });

@@ -195,7 +195,7 @@ addMsgToDOM = (msg) =>
 
 
 fetchTitle = () =>
-    gapi.client.drive.files.get {'fileId': fileId()}, (resp) => 
+    rtclient.getFileMetadata fileId(), (resp) =>
       setTitle resp.title
       setTitleInDOM()
 
