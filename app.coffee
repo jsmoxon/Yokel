@@ -53,6 +53,9 @@ createPictureBox = () =>
 setPicture = (url) =>
     getModel().getRoot().set PB_KEY, url
 
+setYoutube = (url) =>
+    setPicture url
+
 getPicture = () =>
     getModel().getRoot().get PB_KEY
 
@@ -147,8 +150,12 @@ handleSmartMessage = (msg) =>
         setPicture msg[4..]
     if msg.length > 5 and msg[..4] == 'link:'
         addLinkToModel msg[5..]
+    if msg.length > 2 and msg[..2] == 'yt:'
+        setYoutube msg[3..]
     if msg == 'bees'
         setPicture "http://stream1.gifsoup.com/view1/1416886/oprah-s-bees-o.gif"
+
+
 
 addLinkToModel = (link) =>
     getLinkList().push link
@@ -203,8 +210,18 @@ setupPictureBoxListener = () =>
         setPictureBoxLocal()
 
 setPictureBoxLocal = () =>
-    $("#picbox img").attr 'src', getPicture()
+    url = getPicture()
+    if (url.indexOf "youtube.com")
+        $("#picbox img").hide()
+        playYoutubeUrl url
+    else
+        $("#ytapiplayer").empty()
+        $("#picbox img").show().attr 'src', getPicture()
 
+playYoutubeUrl = (url) =>
+    params = { allowScriptAccess: "always" }
+    atts = { id: "myytplayer" }
+    swfobject.embedSWF(url,"ytapiplayer", "425", "356", "8", null, null, params, atts)
 
 fetchName = () =>
   setName ((collab['displayName'] for collab in getCollaborators() when collab['isMe'])[0])
