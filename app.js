@@ -294,7 +294,7 @@
   $(function() {
     var realtimeLoader, realtimeOptions;
     $(".alert").alert();
-    $("#shre").hide();
+    $("#share").hide();
     realtimeOptions = {
       clientId: '761917360771.apps.googleusercontent.com',
       authButtonElementId: 'authorizeButton',
