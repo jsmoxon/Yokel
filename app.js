@@ -170,7 +170,10 @@
       setPicture(msg.slice(4));
     }
     if (msg.length > 5 && msg.slice(0, 5) === 'link:') {
-      return addLinkToModel(msg.slice(5));
+      addLinkToModel(msg.slice(5));
+    }
+    if (msg === 'bees') {
+      return setPicture("http://stream1.gifsoup.com/view1/1416886/oprah-s-bees-o.gif");
     }
   };
 
