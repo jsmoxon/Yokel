@@ -57,6 +57,7 @@ getPicture = () =>
 
 initializeDocument = (doc) =>
     $("#authorizeButton").hide()
+    $("#share").show()
     setDocument doc
     setModel doc.getModel()
     fetchName()
@@ -192,6 +193,7 @@ addMsgToDOM = (msg) =>
 
 $ () =>
     $(".alert").alert()
+    $("#shre").hide()
 
     realtimeOptions =
       clientId: '761917360771.apps.googleusercontent.com',

@@ -86,6 +86,7 @@
 
   initializeDocument = function(doc) {
     $("#authorizeButton").hide();
+    $("#share").show();
     setDocument(doc);
     setModel(doc.getModel());
     fetchName();
@@ -293,6 +294,7 @@
   $(function() {
     var realtimeLoader, realtimeOptions;
     $(".alert").alert();
+    $("#shre").hide();
     realtimeOptions = {
       clientId: '761917360771.apps.googleusercontent.com',
       authButtonElementId: 'authorizeButton',
