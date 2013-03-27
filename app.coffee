@@ -252,6 +252,7 @@ addMsgToDOM = (msg) =>
 fetchTitle = () =>
     rtclient.getFileMetadata fileId(), (resp) =>
       setTitle resp.title
+      setTitleInDOM()
 
 setTitle = (title) =>
     getModel().getRoot().set TITLE_KEY, title

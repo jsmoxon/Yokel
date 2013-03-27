@@ -377,7 +377,8 @@
 
   fetchTitle = function() {
     return rtclient.getFileMetadata(fileId(), function(resp) {
-      return setTitle(resp.title);
+      setTitle(resp.title);
+      return setTitleInDOM();
     });
   };
 
