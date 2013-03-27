@@ -58,7 +58,7 @@ getPicture = () =>
 
 initializeDocument = (doc) =>
     $("#authorizeButton").hide()
-    $("#main").show()
+    $("#right").show()
     $("#loading").hide()
     $("#share").show()
     setDocument doc
@@ -292,7 +292,7 @@ updateTitle = (title) =>
 $ () =>
     $(".alert").alert()
     $("#share").hide()
-    $("#main").hide()
+    $("#right").hide()
     $("#loading").show()
 
     realtimeOptions =
