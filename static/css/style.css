@@ -17,7 +17,7 @@
       clear:both;
 }
 
-#right {
+#right, #loading {
        float:right;
        margin-right:50px;
 }
