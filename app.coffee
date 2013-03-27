@@ -166,10 +166,6 @@ setupDOMListeners = () =>
         if (event.which == 13)
             event.preventDefault()
             postMessage()
-    keepScrollBottom = () =>
-        elem = $("#chatboxdiv")[0]
-        elem.scrollTop = elem.scrollHeight
-    window.setInterval keepScrollBottom, 200
 
     postDateToChatBox = () =>
         date = new Date()
@@ -269,6 +265,7 @@ structureMessage = (msg) =>
 
 addChatLineToDOM = (txt) =>
     $("#chat-box").append $("<li>").text txt
+    $('#chat-box').stop().animate({ scrollTop: $("#chat-box")[0].scrollHeight }, 800)
 
 addMsgToDOM = (msg) =>
     addChatLineToDOM structureMessage msg

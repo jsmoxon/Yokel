@@ -251,19 +251,13 @@
   };
 
   setupDOMListeners = function() {
-    var keepScrollBottom, postDateToChatBox;
+    var postDateToChatBox;
     $("#send-msg-input").bind("keypress", function(event) {
       if (event.which === 13) {
         event.preventDefault();
         return postMessage();
       }
     });
-    keepScrollBottom = function() {
-      var elem;
-      elem = $("#chatboxdiv")[0];
-      return elem.scrollTop = elem.scrollHeight;
-    };
-    window.setInterval(keepScrollBottom, 200);
     postDateToChatBox = function() {
       var date, dateText;
       date = new Date();
@@ -398,7 +392,10 @@
   };
 
   addChatLineToDOM = function(txt) {
-    return $("#chat-box").append($("<li>").text(txt));
+    $("#chat-box").append($("<li>").text(txt));
+    return $('#chat-box').stop().animate({
+      scrollTop: $("#chat-box")[0].scrollHeight
+    }, 800);
   };
 
   addMsgToDOM = function(msg) {
