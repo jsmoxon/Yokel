@@ -179,7 +179,7 @@ clearTitlePing = () =>
 
 share = () =>
     client = new gapi.drive.share.ShareClient('761917360771')
-    client.setItemIds [rtclient.getParams().fileIde]
+    client.setItemIds [rtclient.getParams().fileId]
     client.showSettingsDialog()
 
 
