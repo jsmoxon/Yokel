@@ -227,6 +227,17 @@ rtclient.getFileMetadata = function(fileId, callback) {
   });
 }
 
+rtclient.updateTitle = function(fileId, title) {
+  gapi.client.load('drive', 'v2', function() {
+    gapi.client.drive.files.update({
+      'fileId' : fileId,
+      'title': title
+    }).execute(function (resp) {
+      console.log(resp);
+    });
+  });
+}
+
 
 /**
  * Parses the state parameter passed from the Drive user interface after Open
