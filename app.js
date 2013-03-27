@@ -85,6 +85,7 @@
   };
 
   initializeDocument = function(doc) {
+    $("#authorizeButton").hide();
     setDocument(doc);
     setModel(doc.getModel());
     fetchName();

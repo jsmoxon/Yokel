@@ -56,6 +56,7 @@ getPicture = () =>
     getModel().getRoot().get PB_KEY
 
 initializeDocument = (doc) =>
+    $("#authorizeButton").hide()
     setDocument doc
     setModel doc.getModel()
     fetchName()
