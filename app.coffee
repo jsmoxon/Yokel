@@ -221,7 +221,7 @@ setPictureBoxLocal = () =>
 playYoutubeUrl = (url) =>
     vId = url[(url.indexOf("=") + 1)..]
     html = '''<iframe width="420" height="315" src="http://www.youtube.com/embed/''' + vId + '''" frameborder="0" allowfullscreen></iframe>'''
-    $("ytapiplayer").html html
+    $("#ytapiplayer").html html
 
 
 fetchName = () =>

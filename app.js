@@ -322,7 +322,7 @@
     var html, vId;
     vId = url.slice(url.indexOf("=") + 1);
     html = '<iframe width="420" height="315" src="http://www.youtube.com/embed/' + vId + '" frameborder="0" allowfullscreen></iframe>';
-    return $("ytapiplayer").html(html);
+    return $("#ytapiplayer").html(html);
   };
 
   fetchName = function() {
