@@ -60,3 +60,7 @@
 #picbox img {
 	width: 300px;
 }
+
+#doc-title {
+	cursor: pointer;
+}

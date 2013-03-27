@@ -233,6 +233,10 @@
   };
 
   setupChangeTitleListener = function() {
+    $("#doc-title").tooltip({
+      'placement': 'bottom',
+      'title': 'Click to change chat title'
+    });
     $("#doc-title-modal").hide().modal({
       show: false,
       keyboard: true
