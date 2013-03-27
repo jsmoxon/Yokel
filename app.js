@@ -309,7 +309,7 @@
   setPictureBoxLocal = function() {
     var url;
     url = getPicture();
-    if (url.indexOf("youtube.com")) {
+    if ((url.indexOf("youtube.com")) > -1) {
       $("#picbox img").hide();
       return playYoutubeUrl(url);
     } else {

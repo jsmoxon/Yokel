@@ -211,7 +211,7 @@ setupPictureBoxListener = () =>
 
 setPictureBoxLocal = () =>
     url = getPicture()
-    if (url.indexOf "youtube.com")
+    if (url.indexOf "youtube.com") > -1
         $("#picbox img").hide()
         playYoutubeUrl url
     else
