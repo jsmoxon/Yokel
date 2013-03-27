@@ -265,7 +265,7 @@ structureMessage = (msg) =>
 
 addChatLineToDOM = (txt) =>
     $("#chat-box").append $("<li>").text txt
-    $('#chat-box').stop().animate({ scrollTop: $("#chat-box")[0].scrollHeight }, 800)
+    $('#chatboxdiv').stop().animate({ scrollTop: $("#chatboxdiv")[0].scrollHeight }, 800)
 
 addMsgToDOM = (msg) =>
     addChatLineToDOM structureMessage msg

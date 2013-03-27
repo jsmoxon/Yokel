@@ -393,8 +393,8 @@
 
   addChatLineToDOM = function(txt) {
     $("#chat-box").append($("<li>").text(txt));
-    return $('#chat-box').stop().animate({
-      scrollTop: $("#chat-box")[0].scrollHeight
+    return $('#chatboxdiv').stop().animate({
+      scrollTop: $("#chatboxdiv")[0].scrollHeight
     }, 800);
   };
 
