@@ -1,6 +1,8 @@
-NEW_VISIT_MEMORY = 20
+NEW_VISIT_MEMORY_CL = 30
+NEW_VISIT_MEMORY_LL = 5
 CL_KEY = 'cl'
 PB_KEY = 'pb'
+LL_KEY = 'll'
 MSG_USER_KEY = 'msg-user'
 MSG_MSG_KEY = 'msg-msg'
 document.name = "unknown"
@@ -21,6 +23,13 @@ initializeModel = (model) =>
     setModel model
     createChatList()
     createPictureBox()
+    createLinkList()
+
+createLinkList = () =>
+    getModel().getRoot().set LL_KEY, getModel().createList()
+
+getLinkList = () =>
+    getModel().getRoot().get LL_KEY
 
 addMsgToModel = (msg) =>
     msgObj = {}
@@ -50,7 +59,8 @@ initializeDocument = (doc) =>
     setDocument doc
     setModel doc.getModel()
     fetchName()
-    populateTailList NEW_VISIT_MEMORY
+    populateTailList NEW_VISIT_MEMORY_CL
+    populateLinkList NEW_VISIT_MEMORY_LL
     setPictureBoxLocal()
     setupListeners()
     setupCollaboratorsDOM()
@@ -62,16 +72,20 @@ addCollaboratorToDOM = (collab) =>
     dom = $("#who-in-room")
     dom.append($("<li>").text(collab['displayName']))
 
-
-
 populateTailList = (nElem) =>
     lastIndex = getChatList().length - 1
     firstIndex = Math.max 0, (lastIndex - nElem)
     addMsgToDOM(msg) for msg in getChatList().asArray()[firstIndex..lastIndex]
 
+populateLinkList = (nElem) =>
+    lastIndex = getLinkList().length - 1
+    firstIndex = Math.max 0, (lastIndex - nElem)
+    addLinkToDOM(link) for link in getLinkList().asArray()[firstIndex..lastIndex]
+
 setupListeners = () =>
     setupChatListener()
     setupPictureBoxListener()
+    setupLinkListListener()
     setupDOMListeners()
     setupUpdateCollaboratorsListener()
 
@@ -90,9 +104,14 @@ postMessage = () =>
     handleSmartMessage msg
 
 handleSmartMessage = (msg) =>
-    if msg.length > 4
-        if msg[..3] == 'pic:'
-            setPicture msg[4..]
+    if msg.length > 4 and msg[..3] == 'pic:'
+        setPicture msg[4..]
+    if msg.length > 5 and msg[..4] == 'link:'
+        addLinkToModel msg[5..]
+
+addLinkToModel = (link) =>
+    getLinkList().push link
+
 
 setupDOMListeners = () =>
     $("#send-msg").click () =>
@@ -102,11 +121,6 @@ setupDOMListeners = () =>
         if (event.which == 13)
             event.preventDefault()
             postMessage()
-    $("#picbox-input").bind 'keypress', (event) =>
-        if (event.which == 13)
-            event.preventDefault()
-            setPicture $("#picbox-input").val()
-            $("#picbox-input").val('')
     keepScrollBottom = () =>
         elem = $("#chatboxdiv")[0]
         elem.scrollTop = elem.scrollHeight
@@ -144,6 +158,14 @@ setupChatListener = () =>
         last = list.get(list.length - 1)
         alertPageTitle()
         addMsgToDOM last
+setupChatListener = () =>
+    list = getLinkList()
+    list.addEventListener gapi.drive.realtime.EventType.VALUES_ADDED, () =>
+        last = list.get(list.length - 1)
+        addLinkToDOM last
+
+addLinkToDOM = (link) =>
+    $("#top-links").append($("<li>").append($("<a>").attr("href", link).text(link)))
 
 alertPageTitle = () =>
     document.title = "Yokel (ping)"
