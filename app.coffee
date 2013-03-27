@@ -102,6 +102,7 @@ postMessage = () =>
     addMsgToModel msg
     $('#send-msg-input').val('')
     handleSmartMessage msg
+    clearTitlePing()
 
 handleSmartMessage = (msg) =>
     if msg.length > 4 and msg[..3] == 'pic:'
@@ -116,9 +117,6 @@ addLinkToModel = (link) =>
 
 
 setupDOMListeners = () =>
-    $("#send-msg").click () =>
-        postMessage()
-
     $("#send-msg-input").bind "keypress", (event) =>
         if (event.which == 13)
             event.preventDefault()

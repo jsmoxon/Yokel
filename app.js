@@ -162,7 +162,8 @@
     msg = $('#send-msg-input').val();
     addMsgToModel(msg);
     $('#send-msg-input').val('');
-    return handleSmartMessage(msg);
+    handleSmartMessage(msg);
+    return clearTitlePing();
   };
 
   handleSmartMessage = function(msg) {
@@ -183,9 +184,6 @@
 
   setupDOMListeners = function() {
     var keepScrollBottom, postDateToChatBox;
-    $("#send-msg").click(function() {
-      return postMessage();
-    });
     $("#send-msg-input").bind("keypress", function(event) {
       if (event.which === 13) {
         event.preventDefault();
