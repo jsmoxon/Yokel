@@ -190,8 +190,11 @@ share = () =>
 structureMessage = (msg) =>
     msg[MSG_USER_KEY] + ": " + msg[MSG_MSG_KEY]
 
+addChatLineToDOM = (txt) =>
+    $("#chat-box").append $("<li>").text txt
+
 addMsgToDOM = (msg) =>
-    $("#chat-box").append $("<li>").text structureMessage msg
+    addChatLineToDOM structureMessage msg
 
 
 fetchTitle = () =>
@@ -206,6 +209,17 @@ getTitle = () => document.docTitle
 
 setTitleInDOM = () =>
     $("#doc-title").text ": " + getTitle()
+
+updateTitle = (title) =>
+  gapi.client.load "drive", "v2", ()  =>
+    gapi.client.drive.files.update
+      'fileId': fileId()
+      'uploadType': 'resumable'
+      'body':
+        'title': title
+      ,
+      (resp) =>
+        console.log resp
 
 
 $ () =>
