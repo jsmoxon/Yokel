@@ -98,6 +98,7 @@ setupListeners = () =>
     setupUpdateCollaboratorsListener()
 
 setupTitleListener = () =>
+    doc = getDocument()
     doc.addEventListener gapi.drive.realtime.EventType.VALUE_CHANGED, (event) =>
         if event.property == TITLE_KEY
             setTitleInDOM()
@@ -231,7 +232,7 @@ fetchTitle = () =>
       setTitle resp.title
 
 setTitle = (title) =>
-    getModel().getRoot().put TITLE_KEY, title
+    getModel().getRoot().set TITLE_KEY, title
 
 getTitle = () => 
   getModel().getRoot().get TITLE_KEY
