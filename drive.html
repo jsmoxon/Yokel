@@ -1,72 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Yokel</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <title>Yokel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
 
 
-    <link href="static/css/style.css" rel="stylesheet" media="screen">
+  <link href="static/css/style.css" rel="stylesheet" media="screen">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="http://underscorejs.org/underscore-min.js"></script>
   <script type="text/javascript"
-          src="https://apis.google.com/js/api.js"></script>
+  src="https://apis.google.com/js/api.js"></script>
 
   <!-- Load the utility library. -->
   <script type="text/javascript"
-          src="realtime-client-utils.js"></script>
+  src="realtime-client-utils.js"></script>
   <script type="text/javascript"
-          src="app.js"></script>
+  src="app.js"></script>
 
-  </head>
-  <body>
-    <div id="header" class="">
-      <div id="logo" class="">
-	<a class=""><h1>Yokel</h1></a>
-      </div>
-      <div id="nav-links">
-	<ul>
-	  <li><a href="">Account</a></li>
-          <li><a href="">Rooms</a></li>
-          <li><a href="">Home</a></li>
-	</ul>
+</head>
+<body>
+  <div id="header" class="">
+    <div id="logo" class="">
+     <a class=""><h1>Yokel</h1></a>
+   </div>
+   <div id="nav-links">
+   </div>
+ </div>
+ <div id="main" class="row">
+  <div id="left" class="">
+   <div id="chatboxdiv" class="span9">
+     <ul id="chat-box">
+     </ul>
+   </div>
+   <div id="enter-text">
+     <input type="text" id="send-msg-input"/>
+     <button id="send-msg" class="btn btn-primary">Enter</button>
 
-      </div>
-    </div>
-    <div id="main" class="row">
-      <div id="left" class="">
-	<div id="chatboxdiv" class="span9">
-	  <ul id="chat-box">
-	  </ul>
-	</div>
-	<div id="enter-text">
-	  <input type="text" id="send-msg-input"/>
-	  <button id="send-msg" class="btn btn-primary">Enter</button>
-	  
-	</div>
-      </div>
+   </div>
+ </div>
 
-      <div id="right" class="">
-	<div id="picbox">
+ <div id="right" class="">
+  <h3>Hello, Yokel</h3>
+  <p id="edit-topic"><a href="">edit topic</a></p>
+  <button id="authorizeButton" disabled>You must authorize</button>
+  <!-- <button class="btn btn-success">Alert!</button> -->
+  <div id="picbox">
     <h3>PicBox</h3>
-    <p>Set the picture by chatting "pic: &lt;url of image&gt;"</p>
-	  <img src="http://placekitten.com/300/200" />
-	</div>
-	<h3>Hello, Yokel</h3>
-	<p id="edit-topic"><a href="">edit topic</a></p>
-	<button id="authorizeButton" disabled>You must authorize</button>
-
-	<button class="btn btn-success">Alert!</button>
-	<h3>Who</h3>
-	<ul id="who-in-room">
-	</ul>
-	<h3>Linkage</h3>
-  <p>Add links by chatting "link: &lt;url of link&gt;"</p>
-	<ul id="top-links">
- </ul>
-      </div>
+    <div class="alert alert-info">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      Set the picture by chatting <b>"pic: &lt;url of image&gt;"</b>
     </div>
+    <img src="http://placekitten.com/300/200" />
+  </div>
+  <h3>Who</h3>
+  <ul id="who-in-room">
+  </ul>
+  <h3>Linkage</h3>
+  <div class="alert alert-info">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      Add links by chatting <b>"link: &lt;url of link&gt;"</b>
+    </div>
+  <p></p>
+  <ul id="top-links">
+  </ul>
+</div>
+</div>
 
-  </body>
+</body>
 </html>
