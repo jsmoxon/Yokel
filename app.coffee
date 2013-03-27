@@ -170,6 +170,7 @@ setupDOMListeners = () =>
 
     $("body").click clearTitlePing
     $("#share").click share
+    $("#send-msg-input").focus()
 
     setupChangeTitleListener()
 
@@ -191,6 +192,7 @@ setupChangeTitleListener = () =>
 
     $("#doc-title").click () =>
         $('#doc-title-modal').modal 'show'
+        $("#new-title-input").focus()
 
 
 setupPictureBoxListener = () =>

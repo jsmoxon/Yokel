@@ -261,6 +261,7 @@
     window.setInterval(postDateToChatBox, 600000);
     $("body").click(clearTitlePing);
     $("#share").click(share);
+    $("#send-msg-input").focus();
     return setupChangeTitleListener();
   };
 
@@ -282,7 +283,8 @@
       }
     });
     return $("#doc-title").click(function() {
-      return $('#doc-title-modal').modal('show');
+      $('#doc-title-modal').modal('show');
+      return $("#new-title-input").focus();
     });
   };
 
