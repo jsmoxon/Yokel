@@ -231,7 +231,9 @@ rtclient.updateTitle = function(fileId, title) {
   gapi.client.load('drive', 'v2', function() {
     gapi.client.drive.files.update({
       'fileId' : fileId,
-      'title': title
+      'body': {
+        'title': title
+      }
     }).execute(function (resp) {
       console.log(resp);
     });
