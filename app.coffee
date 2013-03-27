@@ -135,6 +135,7 @@ setupDOMListeners = () =>
     window.setInterval postDateToChatBox, 600000
 
     $("body").click clearTitlePing
+    $("#share").click share
 
 setupPictureBoxListener = () =>
     getModel().getRoot().addEventListener gapi.drive.realtime.EventType.VALUE_CHANGED, () =>
@@ -176,6 +177,10 @@ clearTitlePing = () =>
     document.title = "Yokel"
 
 
+share = () =>
+    client = new gapi.drive.share.ShareClient('761917360771')
+    client.setItemIds [rtclient.getParams().fileIde]
+    client.showSettingsDialog()
 
 
 structureMessage = (msg) =>
@@ -187,7 +192,7 @@ addMsgToDOM = (msg) =>
 
 $ () =>
     $(".alert").alert()
-    
+
     realtimeOptions =
       clientId: '761917360771.apps.googleusercontent.com',
       authButtonElementId: 'authorizeButton',
