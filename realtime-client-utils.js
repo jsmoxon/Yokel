@@ -222,7 +222,7 @@ rtclient.createRealtimeFile = function(title, callback) {
 rtclient.getFileMetadata = function(fileId, callback) {
   gapi.client.load('drive', 'v2', function() {
     gapi.client.drive.files.get({
-      'fileId' : id
+      'fileId' : fileId
     }).execute(callback);
   });
 }
