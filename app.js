@@ -88,7 +88,7 @@
 
   initializeDocument = function(doc) {
     $("#authorizeButton").hide();
-    $("#main").show();
+    $("#right").show();
     $("#loading").hide();
     $("#share").show();
     setDocument(doc);
@@ -431,8 +431,7 @@
     var realtimeLoader, realtimeOptions;
     $(".alert").alert();
     $("#share").hide();
-    $("#main").hide();
-    $("#loading").show();
+    $("#right").hide();
     realtimeOptions = {
       clientId: '761917360771.apps.googleusercontent.com',
       authButtonElementId: 'authorizeButton',

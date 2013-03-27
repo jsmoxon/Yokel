@@ -293,7 +293,7 @@ $ () =>
     $(".alert").alert()
     $("#share").hide()
     $("#right").hide()
-    $("#loading").show()
+    
 
     realtimeOptions =
       clientId: '761917360771.apps.googleusercontent.com',
