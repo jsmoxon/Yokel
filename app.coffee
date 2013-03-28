@@ -243,7 +243,7 @@ setupLinkListListener = () =>
         addLinkToDOM last
 
 addLinkToDOM = (link) =>
-    $("#top-links").append($("<li>").append($("<a>").attr("href", link).text(link)))
+    $("#top-links").prepend($("<li>").prepend($("<a>").attr("href", link).text(link)))
 
 alertPageTitle = () =>
     document.title = "Yokel (ping)"
