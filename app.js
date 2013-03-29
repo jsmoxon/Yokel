@@ -232,14 +232,20 @@
   };
 
   handleSmartMessage = function(msg) {
+    var link;
     if (msg.length > 4 && msg.slice(0, 4) === 'pic:') {
-      setPicture(msg.slice(4));
+      setPicture(msg.slice(4).trim());
     }
     if (msg.length > 5 && msg.slice(0, 5) === 'link:') {
-      addLinkToModel(msg.slice(5));
+      link = msg.slice(5).trim();
+      if ((link.indexOf("gawker.com")) > -1) {
+        alert("That site is garbage, forget about it.");
+      } else {
+        addLinkToModel(link);
+      }
     }
     if (msg.length > 2 && msg.slice(0, 3) === 'yt:') {
-      setYoutube(msg.slice(3));
+      setYoutube(msg.slice(3).trim());
     }
     if (msg === 'bees') {
       return setPicture("http://stream1.gifsoup.com/view1/1416886/oprah-s-bees-o.gif");

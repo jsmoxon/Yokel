@@ -147,11 +147,15 @@ postMessage = () =>
 
 handleSmartMessage = (msg) =>
     if msg.length > 4 and msg[..3] == 'pic:'
-        setPicture msg[4..]
+        setPicture (msg[4..]).trim()
     if msg.length > 5 and msg[..4] == 'link:'
-        addLinkToModel msg[5..]
+        link = (msg[5..]).trim()
+        if (link.indexOf "gawker.com") > -1
+            alert("That site is garbage, forget about it.")
+        else
+            addLinkToModel link
     if msg.length > 2 and msg[..2] == 'yt:'
-        setYoutube msg[3..]
+        setYoutube (msg[3..]).trim()
     if msg == 'bees'
         setPicture "http://stream1.gifsoup.com/view1/1416886/oprah-s-bees-o.gif"
 
