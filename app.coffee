@@ -278,8 +278,7 @@ setMyColor = () =>
     
 
 addChatLineToDOM = (txt) =>
-    $("#chat-box").append $("<li>").text txt
-    $("#chat-box").append $("").append($("").text msg['MSG_USER_KEY']).css('color', msg['MSG_COLOR_KEY']).append $("").html(msg['MSG_MSG_KEY'])
+    $("#chat-box").append $("").append($("").text txt['MSG_USER_KEY']).css('color', txt['MSG_COLOR_KEY']).append $("").html(txt['MSG_MSG_KEY'])
     $('#chatboxdiv').stop().animate({ scrollTop: $("#chatboxdiv")[0].scrollHeight }, 800)
 
 addMsgToDOM = (msg) =>
