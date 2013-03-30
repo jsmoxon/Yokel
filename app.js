@@ -64,7 +64,7 @@
     msgObj = {};
     msgObj[MSG_USER_KEY] = getName();
     msgObj[MSG_MSG_KEY] = msg;
-    msgObj[MSG_COLOR_KEY] = myColor;
+    msgObj[MSG_COLOR_KEY] = setMyColor();
     return getChatList().push(msgObj);
   };
 
@@ -441,7 +441,8 @@
   setMyColor = function() {
     var myColor;
 
-    return myColor = fetchColorFromCollab();
+    myColor = fetchColorFromCollab();
+    return myColor;
   };
 
   addChatLineToDOM = function(txt) {

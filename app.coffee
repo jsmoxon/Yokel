@@ -37,7 +37,7 @@ addMsgToModel = (msg) =>
     msgObj = {}
     msgObj[MSG_USER_KEY] = getName()
     msgObj[MSG_MSG_KEY] = msg
-    msgObj[MSG_COLOR_KEY] = myColor
+    msgObj[MSG_COLOR_KEY] = setMyColor()
     getChatList().push msgObj
     
 
@@ -275,7 +275,7 @@ fetchColorFromCollab = () =>
     
 setMyColor = () =>
     myColor = fetchColorFromCollab()
-    
+    myColor    
 
 addChatLineToDOM = (txt) =>
     $("#chat-box").append $("").append($("").text txt['MSG_USER_KEY']).css('color', txt['MSG_COLOR_KEY']).append $("").html(txt['MSG_MSG_KEY'])
