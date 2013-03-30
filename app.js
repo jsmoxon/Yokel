@@ -64,7 +64,7 @@
     msgObj = {};
     msgObj[MSG_USER_KEY] = getName();
     msgObj[MSG_MSG_KEY] = msg;
-    msgObj[MSG_COLOR_KEY] = myColor();
+    msgObj[MSG_COLOR_KEY] = myColor;
     return getChatList().push(msgObj);
   };
 
