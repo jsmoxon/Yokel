@@ -396,7 +396,7 @@
   };
 
   addLinkToDOM = function(link) {
-    return $("#top-links").prepend($("<li>").prepend($("<a>").attr("href", link).text(link)));
+    return $("#top-links").prepend($("<li>").append($("<a>").attr("href", link).text(link)));
   };
 
   alertPageTitle = function() {
