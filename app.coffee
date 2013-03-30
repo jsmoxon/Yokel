@@ -6,6 +6,7 @@ LL_KEY = 'll'
 TITLE_KEY = 'title'
 MSG_USER_KEY = 'msg-user'
 MSG_MSG_KEY = 'msg-msg'
+MSG_COLOR_KEY = 'msg-color'
 document.name = "unknown"
 setModel = (model) =>
     document.model = model
@@ -36,8 +37,9 @@ addMsgToModel = (msg) =>
     msgObj = {}
     msgObj[MSG_USER_KEY] = getName()
     msgObj[MSG_MSG_KEY] = msg
+    msgObj[MSG_COLOR_KEYl] = myColor()
     getChatList().push msgObj
-
+    
 
 
 createChatList = () =>
@@ -267,8 +269,17 @@ share = () =>
 structureMessage = (msg) =>
     msg[MSG_USER_KEY] + ": " + msg[MSG_MSG_KEY]
 
+fetchColorFromCollab = () => 
+    collaborators = getCollaborators
+    collab['color'] for collab in getCollaborators() when collab['isMe'][0]        
+    
+setMyColor = () =>
+    myColor = fetchColorFromCollab()
+    
+
 addChatLineToDOM = (txt) =>
     $("#chat-box").append $("<li>").text txt
+    $("#chat-box").append $("").append($("").text msg['MSG_USER_KEY']).css('color', msg['MSG_COLOR_KEY']).append $("").html(msg['MSG_MSG_KEY'])
     $('#chatboxdiv').stop().animate({ scrollTop: $("#chatboxdiv")[0].scrollHeight }, 800)
 
 addMsgToDOM = (msg) =>
